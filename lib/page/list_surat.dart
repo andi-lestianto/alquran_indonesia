@@ -44,12 +44,25 @@ class _list_suratState extends State<list_surat> {
             itemCount: namasurat.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                
                 color: Colors.grey,
                 child: Column(
                   children: [
-                    Text("Entry ${namasurat[index]}"),
-                    Html(data: "${keterangan[index]}"),
+                    GestureDetector(
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('Anda klik surat ${namasurat[index]}'),
+                          action: SnackBarAction(label: 'OK', onPressed: () {}),
+                        ));
+                      },
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Text("Entry ${namasurat[index]}"),
+                            Html(data: "${keterangan[index]}"),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               );
