@@ -1,3 +1,4 @@
+import 'package:alquran_indonesia/page/homescreen.dart';
 import 'package:alquran_indonesia/page/list_surat.dart';
 import 'package:flutter/material.dart';
 
@@ -7,13 +8,14 @@ void main() {
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
   
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const list_surat(),
+      home: const HomeScreen(),
     );
   }
 }

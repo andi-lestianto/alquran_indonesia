@@ -1,30 +1,32 @@
 import 'package:alquran_indonesia/model/get_allsurat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/shims/dart_ui_real.dart';
 
 class list_surat extends StatefulWidget {
-  const list_surat({Key key}) : super(key: key);
+  const list_surat({Key? key}) : super(key: key);
 
   @override
   State<list_surat> createState() => _list_suratState();
 }
 
 class _list_suratState extends State<list_surat> {
-  String datasurat = "No data";
-  final List<String> namasurat = <String>[];
-  final List<String> keterangan = <String>[''];
+  final List<String?> nomor = <String?>[];
+  final List<String?> nama = <String?>[];
+  final List<String?> asma = <String?>[];
+  final List<String?> keterangan = <String?>[];
 
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => AmbilDataSurat());
+    AmbilDataSurat();
   }
 
   void AmbilDataSurat() {
     SemuaSurat.getSemuaSurat().then((value) {
-      namasurat.clear();
-      keterangan.clear();
       for (int i = 0; i < value.length; i++) {
-        namasurat.add(value[i].nama);
+        nomor.add(value[i].nomor);
+        nama.add(value[i].nama);
+        asma.add(value[i].asma);
         keterangan.add(value[i].keterangan);
       }
       setState(() {});
@@ -41,7 +43,7 @@ class _list_suratState extends State<list_surat> {
         body: Center(
           child: ListView.separated(
             padding: const EdgeInsets.all(8),
-            itemCount: namasurat.length,
+            itemCount: nomor.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 color: Colors.grey,
@@ -50,14 +52,22 @@ class _list_suratState extends State<list_surat> {
                     GestureDetector(
                       onTap: () {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('Anda klik surat ${namasurat[index]}'),
+                          content: Text('Anda klik surat ${nama[index]}'),
                           action: SnackBarAction(label: 'OK', onPressed: () {}),
                         ));
                       },
                       child: Container(
                         child: Column(
                           children: [
-                            Text("Entry ${namasurat[index]}"),
+                            Text("${nomor[index]}"),
+                            Text("${nama[index]}"),
+                            Text(
+                              "${asma[index]}",
+                              style: TextStyle(
+                                fontFamily: "NotoNaskhArabic",
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                             Html(data: "${keterangan[index]}"),
                           ],
                         ),
