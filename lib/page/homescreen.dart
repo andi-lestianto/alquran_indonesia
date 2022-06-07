@@ -1,3 +1,4 @@
+import 'package:alquran_indonesia/page/list_surat.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -57,11 +58,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              height: 70,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 245, 245, 245)),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => list_surat()));
+                              },
+                              child: Container(
+                                height: 70,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 245, 245, 245)),
+                                    child: Icon(Icons.book),
+                              ),
                             ),
                             Container(
                               height: 70,
