@@ -46,7 +46,7 @@ class _list_suratState extends State<list_surat> {
             itemCount: nomor.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                color: Colors.grey,
+                color: Colors.white,
                 child: Column(
                   children: [
                     GestureDetector(
@@ -56,20 +56,32 @@ class _list_suratState extends State<list_surat> {
                           action: SnackBarAction(label: 'OK', onPressed: () {}),
                         ));
                       },
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Text("${nomor[index]}"),
-                            Text("${nama[index]}"),
-                            Text(
-                              "${asma[index]}",
-                              style: TextStyle(
-                                fontFamily: "NotoNaskhArabic",
-                                fontWeight: FontWeight.w700,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                              border: Border(bottom: BorderSide(width: 1))),
+                          child: Row(
+                            children: [
+                              Text("${nomor[index]}."),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text("${nama[index]}"),
                               ),
-                            ),
-                            Html(data: "${keterangan[index]}"),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  "${asma[index]}",
+                                  style: TextStyle(
+                                    fontFamily: "NotoNaskhArabic",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                              // Html(data: "${keterangan[index]}"),
+                            ],
+                          ),
                         ),
                       ),
                     ),
