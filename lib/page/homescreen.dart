@@ -14,10 +14,32 @@ class _HomeScreenState extends State<HomeScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Container(
-          color: Color.fromARGB(255, 16, 154, 126),
+        body: SafeArea(
           child: Stack(
             children: [
+              Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                color: Color.fromARGB(255, 16, 154, 126),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 70,
+                      width: 70,
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 245, 245, 245)),
+                    ),
+                    Container(
+                      height: 70,
+                      width: 70,
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 245, 245, 245)),
+                    ),
+                  ],
+                ),
+              ),
               Align(
                 alignment: Alignment(0, 1),
                 child: Container(
@@ -60,14 +82,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => list_surat()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => list_surat()));
                               },
                               child: Container(
                                 height: 70,
                                 width: 70,
                                 decoration: BoxDecoration(
                                     color: Color.fromARGB(255, 245, 245, 245)),
-                                    child: Icon(Icons.book),
+                                child: Icon(Icons.book),
                               ),
                             ),
                             Container(
