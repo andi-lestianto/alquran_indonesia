@@ -1,35 +1,34 @@
 import 'package:alquran_indonesia/model/get_allayat.dart';
 import 'package:alquran_indonesia/model/get_allsurat.dart';
-import 'package:alquran_indonesia/page/list_ayat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/shims/dart_ui_real.dart';
 
-class list_surat extends StatefulWidget {
-  const list_surat({Key? key}) : super(key: key);
+class list_ayat extends StatefulWidget {
+  const list_ayat({Key? key}) : super(key: key);
 
   @override
-  State<list_surat> createState() => _list_suratState();
+  State<list_ayat> createState() => _list_ayatState();
 }
 
-class _list_suratState extends State<list_surat> {
+class _list_ayatState extends State<list_ayat> {
+  final List<String?> ar = <String?>[];
+  final List<String?> id = <String?>[];
+  final List<String?> tr = <String?>[];
   final List<String?> nomor = <String?>[];
-  final List<String?> nama = <String?>[];
-  final List<String?> asma = <String?>[];
-  final List<String?> keterangan = <String?>[];
 
   void initState() {
     super.initState();
-    AmbilDataSurat();
+    AmbilDataAyat();
   }
 
-  void AmbilDataSurat() {
-    SemuaSurat.getSemuaSurat().then((value) {
+  void AmbilDataAyat() {
+    SemuaAyat.getSemuaAyat("5").then((value) {
       for (int i = 0; i < value.length; i++) {
+        ar.add(value[i].ar);
+        id.add(value[i].id);
+        tr.add(value[i].tr);
         nomor.add(value[i].nomor);
-        nama.add(value[i].nama);
-        asma.add(value[i].asma);
-        keterangan.add(value[i].keterangan);
       }
       setState(() {});
     });
@@ -61,27 +60,26 @@ class _list_suratState extends State<list_surat> {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         child: Container(
-                          height: 40,
-                          decoration: BoxDecoration(
-                              border: Border(bottom: BorderSide(width: 1))),
                           child: Row(
                             children: [
-                              Text("${nomor[index]}."),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text("${nama[index]}"),
+                              Text(
+                                "${nomor[index]}",
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text(
-                                  "${asma[index]}",
-                                  style: TextStyle(
-                                    fontFamily: "NotoNaskhArabic",
-                                    fontWeight: FontWeight.w700,
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "${ar[index]}",
+                                    maxLines: 5,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontFamily: "NotoNaskhArabic",
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.end,
                                   ),
                                 ),
-                              ),
-                              // Html(data: "${keterangan[index]}"),
+                              )
                             ],
                           ),
                         ),
