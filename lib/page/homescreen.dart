@@ -50,6 +50,17 @@ final List<Widget> imageSliders = imgList
         ))
     .toList();
 
+String greeting() {
+  var hour = DateTime.now().hour;
+  if (hour < 12) {
+    return 'Pagi';
+  }
+  if (hour < 17) {
+    return 'Siang';
+  }
+  return 'Malam';
+}
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -83,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Selamat Datang",
+                            "Selamat ${greeting()}",
                             style: stylePoppins1.copyWith(color: Colors.white),
                           ),
                           Text(
