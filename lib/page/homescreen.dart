@@ -1,54 +1,8 @@
 import 'package:alquran_indonesia/page/list_surat.dart';
 import 'package:alquran_indonesia/theme/theme.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
-final List<String> imgList = [
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
-];
-
-final List<Widget> imageSliders = imgList
-    .map((item) => Container(
-          child: Container(
-            color: Colors.amber,
-            child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                child: Stack(
-                  children: <Widget>[
-                    Image.network(item, fit: BoxFit.cover, width: 1000.0),
-                    Positioned(
-                      bottom: 0.0,
-                      left: 0.0,
-                      right: 0.0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color.fromARGB(200, 0, 0, 0),
-                              Color.fromARGB(0, 0, 0, 0)
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
-                          ),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 20.0),
-                        child: Text(
-                          'No. ${imgList.indexOf(item)} image',
-                          style: stylePoppins2.copyWith(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
-          ),
-        ))
-    .toList();
+import 'package:google_fonts/google_fonts.dart';
+import 'package:supercharged/supercharged.dart';
 
 String greeting() {
   var hour = DateTime.now().hour;
@@ -74,130 +28,294 @@ class _HomeScreenState extends State<HomeScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: SafeArea(
-          child: Stack(
-            children: [
-              Container(
-                padding: EdgeInsets.only(top: 50),
+        body: Stack(
+          children: [
+            Container(
+              color: greencolor,
+            ),
+            SafeArea(
+              child: Container(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.05),
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                color: Color.fromARGB(255, 16, 154, 126),
+                color: greencolor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 20),
+                      margin: EdgeInsets.only(left: 20, top: 20),
                       height: 150,
-                      width: MediaQuery.of(context).size.width * 0.60,
+                      width: MediaQuery.of(context).size.width * 0.50,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text("Selamat ${greeting()}",
+                              style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                  color: "fde084".toColor())),
                           Text(
-                            "Selamat ${greeting()}",
-                            style: stylePoppins1.copyWith(color: Colors.white),
-                          ),
-                          Text(
-                            "Lorem ipsum dolor si amet ipsum dolr sit amet Lorem ipsum dolor sit amet",
+                            "Sudahkan kamu membaca Al Qur'an hari ini?",
                             maxLines: 4,
-                            style: stylePoppins2.copyWith(
-                                color: Colors.white.withOpacity(0.75)),
+                            style: GoogleFonts.poppins(
+                                fontSize: 15, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(right: 20),
-                      height: 70,
-                      width: 70,
+                      height: 150,
+                      width: 150,
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 245, 245, 245)),
+                          image: DecorationImage(
+                              image: AssetImage("assets/muslim.png"))),
                     ),
                   ],
                 ),
               ),
-              Align(
-                alignment: Alignment(0, 1),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 1,
-                  height: MediaQuery.of(context).size.height * 0.70,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25),
-                        topRight: Radius.circular(25)),
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-                        child: CarouselSlider(
-                          options: CarouselOptions(
-                            autoPlay: true,
-                            aspectRatio: 2.0,
-                            enlargeCenterPage: true,
-                          ),
-                          items: imageSliders,
-                        ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.28),
+              width: MediaQuery.of(context).size.width * 1,
+              height: MediaQuery.of(context).size.height * 0.75,
+              decoration: BoxDecoration(
+                color: "F2F1EF".toColor(),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25)),
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(25),
+                      height: 150,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 30, top: 10),
-                        child: Container(
-                            width: MediaQuery.of(context).size.width * 1,
-                            child: Text(
-                              "Silahkan Pilih Menu",
-                              style: stylePoppins2.copyWith(
-                                  fontWeight: FontWeight.bold),
-                            )),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(top: 20, left: 30, right: 30),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => list_surat()));
-                              },
+                            Container(child: Image.asset("assets/mosque.png")),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Container(
                               child: Container(
-                                height: 70,
-                                width: 70,
-                                decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                child: Icon(Icons.book),
+                                width: MediaQuery.of(context).size.width * 0.45,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Siapa yang menempuh jalan untuk mencari ilmu, maka Allah akan mudahkan baginya jalan menuju surga",
+                                      style: GoogleFonts.poppins(
+                                          fontStyle: FontStyle.italic,
+                                          fontSize: 12),
+                                      maxLines: 4,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "HR Muslim, no. 2699",
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              height: 70,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 245, 245, 245)),
-                            ),
-                            Container(
-                              height: 70,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 245, 245, 245)),
-                            ),
-                            Container(
-                              height: 70,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 245, 245, 245)),
                             ),
                           ],
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 30,
+                      ),
+                      child: Container(
+                          width: MediaQuery.of(context).size.width * 1,
+                          child: Center(
+                            child: Text(
+                              "Silahkan Pilih Menu",
+                              style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: greencolor),
+                            ),
+                          )),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 20, left: 30, right: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => list_surat()));
+                            },
+                            child: Container(
+                              height: 150,
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.white),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                    image: AssetImage(
+                                      "assets/open-book.png",
+                                    ),
+                                    width: 50,
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    "Baca Al'quran",
+                                    style: stylePoppins2,
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => list_surat()));
+                            },
+                            child: Container(
+                              height: 150,
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.white),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                    image: AssetImage(
+                                      "assets/history.png",
+                                    ),
+                                    width: 50,
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    "Tentang Surat",
+                                    style: stylePoppins2,
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 20, left: 30, right: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => list_surat()));
+                            },
+                            child: Container(
+                              height: 150,
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.white),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                    image: AssetImage(
+                                      "assets/speaker.png",
+                                    ),
+                                    width: 50,
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    "Dengarkan Murotal",
+                                    style: stylePoppins2,
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => list_surat()));
+                            },
+                            child: Container(
+                              height: 150,
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.white),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                    image: AssetImage(
+                                      "assets/info-button.png",
+                                    ),
+                                    width: 50,
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    "Tentang Aplikasi",
+                                    style: stylePoppins2,
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

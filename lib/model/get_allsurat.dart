@@ -6,15 +6,25 @@ class SemuaSurat {
   String? keterangan;
   String? asma;
   String? nomor;
+  String? arti;
+  String? urut;
 
-  SemuaSurat({this.nama, this.keterangan,this.asma,this.nomor});
+  SemuaSurat(
+      {this.nama,
+      this.keterangan,
+      this.asma,
+      this.nomor,
+      this.arti,
+      this.urut});
 
   factory SemuaSurat.createSurat(Map<String, dynamic> object) {
     return SemuaSurat(
-      nama : object["nama"],
+      nama: object["nama"],
       keterangan: object["keterangan"],
       asma: object["asma"],
       nomor: object["nomor"],
+      arti: object["arti"],
+      urut: object["urut"],
     );
   }
 
