@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text("Selamat ${greeting()}",
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 22,
                                   color: "fde084".toColor())),
                           Text(
                             "Sudahkan kamu membaca Al Qur'an hari ini?",
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Container(
                       margin: EdgeInsets.only(right: 20),
-                      height: 150,
+                      height: 180,
                       width: 150,
                       decoration: BoxDecoration(
                           image: DecorationImage(
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Container(
                               child: Container(
-                                width: MediaQuery.of(context).size.width * 0.45,
+                                width: MediaQuery.of(context).size.width * 0.4,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -195,12 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => list_surat()));
-                            },
+                            onTap: () {},
                             child: Container(
                               height: 150,
                               width: MediaQuery.of(context).size.width * 0.4,
@@ -238,12 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => list_surat()));
-                            },
+                            onTap: () {},
                             child: Container(
                               height: 150,
                               width: MediaQuery.of(context).size.width * 0.4,
@@ -272,12 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => list_surat()));
-                            },
+                            onTap: () {},
                             child: Container(
                               height: 150,
                               width: MediaQuery.of(context).size.width * 0.4,

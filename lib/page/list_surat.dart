@@ -121,7 +121,9 @@ class _list_suratState extends State<list_surat> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => list_ayat()));
+                                        builder: (context) => list_ayat(
+                                              nsurat: nomor[index],
+                                            )));
                               },
                               child: Padding(
                                 padding:

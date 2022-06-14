@@ -5,7 +5,8 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/shims/dart_ui_real.dart';
 
 class list_ayat extends StatefulWidget {
-  const list_ayat({Key? key}) : super(key: key);
+  final String? nsurat;
+  const list_ayat({Key? key, this.nsurat}) : super(key: key);
 
   @override
   State<list_ayat> createState() => _list_ayatState();
@@ -23,7 +24,7 @@ class _list_ayatState extends State<list_ayat> {
   }
 
   void AmbilDataAyat() {
-    SemuaAyat.getSemuaAyat("5").then((value) {
+    SemuaAyat.getSemuaAyat(widget.nsurat.toString()).then((value) {
       for (int i = 0; i < value.length; i++) {
         ar.add(value[i].ar);
         id.add(value[i].id);
@@ -37,11 +38,9 @@ class _list_ayatState extends State<list_ayat> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Api Demo"),
-        ),
-        body: Center(
+        body: SafeArea(
           child: ListView.separated(
             padding: const EdgeInsets.all(8),
             itemCount: nomor.length,
@@ -50,38 +49,38 @@ class _list_ayatState extends State<list_ayat> {
                 color: Colors.white,
                 child: Column(
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => list_ayat()));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                "${nomor[index]}",
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: Text(
-                                    "${ar[index]}",
-                                    maxLines: 5,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontFamily: "NotoNaskhArabic",
-                                      fontWeight: FontWeight.w700,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: Container(
+                        child: Row(
+                          children: [
+                            Text(
+                              " ${nomor[index]}",
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "${ar[index]}",
+                                      maxLines: 5,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontFamily: "NotoNaskhArabic",
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                      textAlign: TextAlign.end,
                                     ),
-                                    textAlign: TextAlign.end,
-                                  ),
+                                    Html(
+                                      data: "${tr[index]}",
+                                    ),
+                                    Text("${id[index]}"),
+                                  ],
                                 ),
-                              )
-                            ],
-                          ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
