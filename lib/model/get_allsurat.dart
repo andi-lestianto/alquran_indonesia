@@ -8,6 +8,7 @@ class SemuaSurat {
   String? nomor;
   String? arti;
   String? urut;
+  String? audio;
 
   SemuaSurat(
       {this.nama,
@@ -15,17 +16,18 @@ class SemuaSurat {
       this.asma,
       this.nomor,
       this.arti,
-      this.urut});
+      this.urut,
+      this.audio});
 
   factory SemuaSurat.createSurat(Map<String, dynamic> object) {
     return SemuaSurat(
-      nama: object["nama"],
-      keterangan: object["keterangan"],
-      asma: object["asma"],
-      nomor: object["nomor"],
-      arti: object["arti"],
-      urut: object["urut"],
-    );
+        nama: object["nama"],
+        keterangan: object["keterangan"],
+        asma: object["asma"],
+        nomor: object["nomor"],
+        arti: object["arti"],
+        urut: object["urut"],
+        audio: object["audio"]);
   }
 
   static Future<List<SemuaSurat>> getSemuaSurat() async {
