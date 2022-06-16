@@ -22,12 +22,12 @@ class _listAudioState extends State<listAudio> {
 
   _listAudioState() {
     audioPlayer = AudioPlayer();
-    audioPlayer?.onPositionChanged.listen((duration) {
+    audioPlayer?.onAudioPositionChanged.listen((duration) {
       setState(() {
         durasi = duration.toString();
       });
     });
-    audioPlayer?.setReleaseMode(ReleaseMode.loop);
+    audioPlayer?.setReleaseMode(ReleaseMode.STOP);
   }
   void initState() {
     super.initState();
@@ -35,7 +35,7 @@ class _listAudioState extends State<listAudio> {
   }
 
   void playSound(String url) async {
-    await audioPlayer!.play(UrlSource(url));
+    await audioPlayer!.play(url);
   }
 
   void pauseSound() async {
@@ -136,7 +136,8 @@ class _listAudioState extends State<listAudio> {
                                 padding:
                                     const EdgeInsets.fromLTRB(10, 0, 10, 0),
                                 child: Container(
-                                  height: 80,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.11,
                                   decoration: BoxDecoration(
                                       border: Border(
                                           bottom: BorderSide(
@@ -159,7 +160,7 @@ class _listAudioState extends State<listAudio> {
                                           ))),
                                       Padding(
                                         padding:
-                                            const EdgeInsets.only(left: 25),
+                                            const EdgeInsets.only(left: 15),
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -174,14 +175,13 @@ class _listAudioState extends State<listAudio> {
                                                   fontSize: 20),
                                             ),
                                             Row(
-                                              mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 IconButton(
                                                     onPressed: () {
                                                       playSound(
                                                           "${audio[index]}");
                                                     },
-                                                    iconSize: 30.0,
+                                                    iconSize: 30,
                                                     icon:
                                                         Icon(Icons.play_arrow),
                                                     color: greencolor),
@@ -189,33 +189,40 @@ class _listAudioState extends State<listAudio> {
                                                     onPressed: () {
                                                       pauseSound();
                                                     },
-                                                    iconSize: 30.0,
+                                                    iconSize: 30,
                                                     icon: Icon(Icons.pause),
                                                     color: greencolor),
                                                 IconButton(
                                                     onPressed: () {
                                                       stopSound();
                                                     },
-                                                    iconSize: 30.0,
+                                                    iconSize: 30,
                                                     icon: Icon(Icons.stop),
                                                     color: greencolor),
                                                 IconButton(
                                                     onPressed: () {
                                                       resumeSound();
                                                     },
-                                                    iconSize: 30.0,
+                                                    iconSize: 30,
                                                     icon: Icon(
                                                         Icons.pause_circle),
                                                     color: greencolor),
-                                                Text(
-                                                  durasi,
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                )
                                               ],
                                             ),
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.024),
+                                              child: Text(
+                                                durasi,
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                            )
                                           ],
                                         ),
                                       ),
