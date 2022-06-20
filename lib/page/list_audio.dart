@@ -17,7 +17,7 @@ class _listAudioState extends State<listAudio> {
   final List<String?> nama = <String?>[];
   final List<String?> asma = <String?>[];
   final List<String?> audio = <String>[];
-  String durasi = '00:00:00';
+  String durasi = "00.00.00";
   AudioPlayer? audioPlayer;
 
   _listAudioState() {
@@ -194,18 +194,18 @@ class _listAudioState extends State<listAudio> {
                                                     color: greencolor),
                                                 IconButton(
                                                     onPressed: () {
-                                                      stopSound();
-                                                    },
-                                                    iconSize: 30,
-                                                    icon: Icon(Icons.stop),
-                                                    color: greencolor),
-                                                IconButton(
-                                                    onPressed: () {
                                                       resumeSound();
                                                     },
                                                     iconSize: 30,
                                                     icon: Icon(
                                                         Icons.pause_circle),
+                                                    color: greencolor),
+                                                IconButton(
+                                                    onPressed: () {
+                                                      stopSound();
+                                                    },
+                                                    iconSize: 30,
+                                                    icon: Icon(Icons.stop),
                                                     color: greencolor),
                                               ],
                                             ),
@@ -222,7 +222,7 @@ class _listAudioState extends State<listAudio> {
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
-                                            )
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -238,7 +238,6 @@ class _listAudioState extends State<listAudio> {
                                           textAlign: TextAlign.right,
                                         ),
                                       ),
-                                      // Html(data: "${keterangan[index]}"),
                                     ],
                                   ),
                                 ),
