@@ -2,6 +2,7 @@ import 'package:alquran_indonesia/model/get_allsurat.dart';
 import 'package:alquran_indonesia/theme/theme.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supercharged/supercharged.dart';
 
@@ -122,133 +123,148 @@ class _listAudioState extends State<listAudio> {
                     top: MediaQuery.of(context).size.height * 0.2),
                 child: Container(
                   padding: EdgeInsets.only(top: 10),
-                  child: ListView.builder(
-                    padding: const EdgeInsets.all(8),
-                    itemCount: nomor.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        color: Colors.white,
-                        child: Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.11,
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              width: 1,
-                                              color: "e1e1e1".toColor()))),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                          height: 25,
-                                          width: 25,
-                                          decoration: BoxDecoration(
-                                              color: greencolor,
-                                              borderRadius:
-                                                  BorderRadius.circular(40)),
-                                          child: Center(
-                                              child: Text(
-                                            "${nomor[index]}",
-                                            style: GoogleFonts.poppins(
-                                                color: Colors.white),
-                                          ))),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 15),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                  child: (nomor.length == 0)
+                      ? Center(
+                          child: SpinKitFadingCircle(
+                          size: 45,
+                          color: Colors.green,
+                        ))
+                      : ListView.builder(
+                          padding: const EdgeInsets.all(8),
+                          itemCount: nomor.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              color: Colors.white,
+                              child: Column(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 0, 10, 0),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.15,
+                                        decoration: BoxDecoration(
+                                            border: Border(
+                                                bottom: BorderSide(
+                                                    width: 1,
+                                                    color:
+                                                        "e1e1e1".toColor()))),
+                                        child: Row(
                                           children: [
-                                            Text(
-                                              "${nama[index]}",
-                                              style: GoogleFonts.poppins(
-                                                  color: Colors.black87,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20),
-                                            ),
-                                            Row(
-                                              children: [
-                                                IconButton(
-                                                    onPressed: () {
-                                                      playSound(
-                                                          "${audio[index]}");
-                                                    },
-                                                    iconSize: 30,
-                                                    icon:
-                                                        Icon(Icons.play_arrow),
-                                                    color: greencolor),
-                                                IconButton(
-                                                    onPressed: () {
-                                                      pauseSound();
-                                                    },
-                                                    iconSize: 30,
-                                                    icon: Icon(Icons.pause),
-                                                    color: greencolor),
-                                                IconButton(
-                                                    onPressed: () {
-                                                      stopSound();
-                                                    },
-                                                    iconSize: 30,
-                                                    icon: Icon(Icons.stop),
-                                                    color: greencolor),
-                                                IconButton(
-                                                    onPressed: () {
-                                                      resumeSound();
-                                                    },
-                                                    iconSize: 30,
-                                                    icon: Icon(
-                                                        Icons.pause_circle),
-                                                    color: greencolor),
-                                              ],
-                                            ),
+                                            Container(
+                                                height: 25,
+                                                width: 25,
+                                                decoration: BoxDecoration(
+                                                    color: greencolor,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            40)),
+                                                child: Center(
+                                                    child: Text(
+                                                  "${nomor[index]}",
+                                                  style: GoogleFonts.poppins(
+                                                      color: Colors.white),
+                                                ))),
                                             Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.024),
-                                              child: Text(
-                                                durasi,
-                                                style: TextStyle(
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w600),
+                                              padding: const EdgeInsets.only(
+                                                  left: 15),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "${nama[index]}",
+                                                    style: GoogleFonts.poppins(
+                                                        color: Colors.black87,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      IconButton(
+                                                          onPressed: () {
+                                                            playSound(
+                                                                "${audio[index]}");
+                                                          },
+                                                          iconSize: 30,
+                                                          icon: Icon(
+                                                              Icons.play_arrow),
+                                                          color: greencolor),
+                                                      IconButton(
+                                                          onPressed: () {
+                                                            pauseSound();
+                                                          },
+                                                          iconSize: 30,
+                                                          icon:
+                                                              Icon(Icons.pause),
+                                                          color: greencolor),
+                                                      IconButton(
+                                                          onPressed: () {
+                                                            stopSound();
+                                                          },
+                                                          iconSize: 30,
+                                                          icon:
+                                                              Icon(Icons.stop),
+                                                          color: greencolor),
+                                                      IconButton(
+                                                          onPressed: () {
+                                                            resumeSound();
+                                                          },
+                                                          iconSize: 30,
+                                                          icon: Icon(Icons
+                                                              .pause_circle),
+                                                          color: greencolor),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.024),
+                                                    child: Text(
+                                                      durasi,
+                                                      style: TextStyle(
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    ),
+                                                  )
+                                                ],
                                               ),
-                                            )
+                                            ),
+                                            Expanded(child: SizedBox()),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: Text(
+                                                "${asma[index]}",
+                                                style:
+                                                    GoogleFonts.notoNaskhArabic(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 25),
+                                                textAlign: TextAlign.right,
+                                              ),
+                                            ),
+                                            // Html(data: "${keterangan[index]}"),
                                           ],
                                         ),
                                       ),
-                                      Expanded(child: SizedBox()),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10),
-                                        child: Text(
-                                          "${asma[index]}",
-                                          style: GoogleFonts.notoNaskhArabic(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 25),
-                                          textAlign: TextAlign.right,
-                                        ),
-                                      ),
-                                      // Html(data: "${keterangan[index]}"),
-                                    ],
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
                 ),
               ),
             ),
