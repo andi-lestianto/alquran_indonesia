@@ -10,7 +10,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class list_ayat extends StatefulWidget {
   final String? nsurat;
-  const list_ayat({Key? key, this.nsurat}) : super(key: key);
+  final String? namasurat;
+  final String? artisurat;
+  const list_ayat({Key? key, this.nsurat, this.namasurat, this.artisurat})
+      : super(key: key);
 
   @override
   State<list_ayat> createState() => _list_ayatState();
@@ -51,29 +54,28 @@ class _list_ayatState extends State<list_ayat> {
             ),
             SafeArea(
               child: Container(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.02),
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                color: greencolor,
+                height: MediaQuery.of(context).size.height * 0.3,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/bghome.png"),
+                        opacity: 0.2,
+                        fit: BoxFit.cover)),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 20, top: 20),
-                      height: 150,
-                      width: MediaQuery.of(context).size.width * 0.50,
+                      width: MediaQuery.of(context).size.width * 0.4,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Baca Alquran",
+                          Text(widget.namasurat.toString(),
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 22,
                                   color: "fde084".toColor())),
                           Text(
-                            "Sudahkan kamu membaca Al Qur'an hari ini?",
+                            widget.artisurat.toString(),
                             maxLines: 4,
                             style: GoogleFonts.poppins(
                                 fontSize: 15, color: Colors.white),
@@ -82,118 +84,115 @@ class _list_ayatState extends State<list_ayat> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(right: 20),
-                      height: 150,
-                      width: 150,
+                      width: MediaQuery.of(context).size.width * 0.4,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/muslim.png"))),
+                              image: AssetImage("assets/muslim.png"),
+                              fit: BoxFit.fitWidth)),
                     ),
                   ],
                 ),
               ),
             ),
-            SafeArea(
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25)),
+              ),
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.28),
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25)),
-                ),
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.2),
-                child: Container(
-                  padding: EdgeInsets.only(top: 10),
-                  child: (nomor.length == 0)
-                      ? Center(
-                          child: SpinKitFadingCircle(
-                          size: 45,
-                          color: Colors.green,
-                        ))
-                      : ListView.separated(
-                          padding: const EdgeInsets.all(8),
-                          itemCount: nomor.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              color: Colors.white,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                    child: Container(
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 25,
-                                            width: 25,
-                                            decoration: BoxDecoration(
-                                                color: greencolor,
-                                                borderRadius:
-                                                    BorderRadius.circular(40)),
-                                            child: Center(
-                                              child: Text(
-                                                " ${nomor[index]}",
-                                                style: GoogleFonts.poppins(
-                                                    color: Colors.white),
-                                              ),
+                padding: EdgeInsets.only(top: 10),
+                child: (nomor.length == 0)
+                    ? Center(
+                        child: SpinKitFadingCircle(
+                        size: 45,
+                        color: Colors.green,
+                      ))
+                    : ListView.separated(
+                        padding: const EdgeInsets.all(8),
+                        itemCount: nomor.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            color: Colors.white,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                  child: Container(
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          decoration: BoxDecoration(
+                                              color: greencolor,
+                                              borderRadius:
+                                                  BorderRadius.circular(40)),
+                                          child: Center(
+                                            child: Text(
+                                              " ${nomor[index]}",
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.white),
                                             ),
                                           ),
-                                          Expanded(
-                                            child: Container(
-                                              padding: EdgeInsets.fromLTRB(
-                                                  10, 0, 10, 0),
-                                              margin: const EdgeInsets.only(
-                                                  left: 20),
-                                              child: Column(
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        Alignment.centerRight,
-                                                    child: Text(
-                                                      "${ar[index]}",
-                                                      maxLines: 5,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                        fontFamily:
-                                                            "NotoNaskhArabic",
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        fontSize: 25,
-                                                      ),
-                                                      textAlign: TextAlign.end,
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            padding: EdgeInsets.fromLTRB(
+                                                10, 0, 10, 0),
+                                            margin:
+                                                const EdgeInsets.only(left: 20),
+                                            child: Column(
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  child: Text(
+                                                    "${ar[index]}",
+                                                    maxLines: 5,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                      fontFamily:
+                                                          "NotoNaskhArabic",
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontSize: 25,
                                                     ),
+                                                    textAlign: TextAlign.end,
                                                   ),
-                                                  Align(
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Html(
+                                                    data: "${tr[index]}",
+                                                  ),
+                                                ),
+                                                Align(
                                                     alignment:
                                                         Alignment.centerLeft,
-                                                    child: Html(
-                                                      data: "${tr[index]}",
-                                                    ),
-                                                  ),
-                                                  Align(
-                                                      alignment:
-                                                          Alignment.centerLeft,
-                                                      child:
-                                                          Text("${id[index]}")),
-                                                ],
-                                              ),
+                                                    child:
+                                                        Text("${id[index]}")),
+                                              ],
                                             ),
-                                          )
-                                        ],
-                                      ),
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
-                                ],
-                              ),
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) =>
-                              const Divider(),
-                        ),
-                ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const Divider(),
+                      ),
               ),
             ),
           ],

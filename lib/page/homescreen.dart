@@ -36,21 +36,20 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SafeArea(
               child: Container(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.05),
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                color: greencolor,
+                height: MediaQuery.of(context).size.height * 0.3,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/bghome.png"),
+                        opacity: 0.2,
+                        fit: BoxFit.cover)),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 20, top: 20),
-                      height: 150,
-                      width: MediaQuery.of(context).size.width * 0.50,
+                      width: MediaQuery.of(context).size.width * 0.5,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Selamat ${greeting()}",
                               style: GoogleFonts.poppins(
@@ -67,12 +66,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(right: 20),
-                      height: 180,
-                      width: 150,
+                      width: MediaQuery.of(context).size.width * 0.4,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/muslim.png"))),
+                              image: AssetImage("assets/muslim.png"),
+                              fit: BoxFit.fitWidth)),
                     ),
                   ],
                 ),

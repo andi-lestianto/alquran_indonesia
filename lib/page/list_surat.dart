@@ -55,26 +55,25 @@ class _list_suratState extends State<list_surat> {
             ),
             SafeArea(
               child: Container(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.02),
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                color: greencolor,
+                height: MediaQuery.of(context).size.height * 0.3,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/bghome.png"),
+                        opacity: 0.2,
+                        fit: BoxFit.cover)),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 20, top: 20),
-                      height: 150,
-                      width: MediaQuery.of(context).size.width * 0.50,
+                      width: MediaQuery.of(context).size.width * 0.5,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Baca Alquran",
+                          Text("Baca Alquran ",
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 22,
                                   color: "fde084".toColor())),
                           Text(
                             "Sudahkan kamu membaca Al Qur'an hari ini?",
@@ -86,134 +85,132 @@ class _list_suratState extends State<list_surat> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(right: 20),
-                      height: 150,
-                      width: 150,
+                      width: MediaQuery.of(context).size.width * 0.4,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/muslim.png"))),
+                              image: AssetImage("assets/muslim.png"),
+                              fit: BoxFit.fitWidth)),
                     ),
                   ],
                 ),
               ),
             ),
-            SafeArea(
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25)),
+              ),
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.28),
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25)),
-                ),
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.2),
-                child: Container(
-                  padding: EdgeInsets.only(top: 10),
-                  child: (nomor.length == 0)
-                      ? Center(
-                          child: SpinKitFadingCircle(
-                          size: 45,
-                          color: Colors.green,
-                        ))
-                      : ListView.builder(
-                          padding: const EdgeInsets.all(8),
-                          itemCount: nomor.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              color: Colors.white,
-                              child: Column(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => list_ayat(
-                                                    nsurat: nomor[index],
-                                                  )));
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          10, 0, 10, 0),
-                                      child: Container(
-                                        height: 80,
-                                        decoration: BoxDecoration(
-                                            border: Border(
-                                                bottom: BorderSide(
-                                                    width: 1,
-                                                    color:
-                                                        "e1e1e1".toColor()))),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                                height: 25,
-                                                width: 25,
-                                                decoration: BoxDecoration(
-                                                    color: greencolor,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            40)),
-                                                child: Center(
-                                                    child: Text(
-                                                  "${nomor[index]}",
+                padding: EdgeInsets.only(top: 10),
+                child: (nomor.length == 0)
+                    ? Center(
+                        child: SpinKitFadingCircle(
+                        size: 45,
+                        color: Colors.green,
+                      ))
+                    : ListView.builder(
+                        padding: const EdgeInsets.all(8),
+                        itemCount: nomor.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            color: Colors.white,
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => list_ayat(
+                                                  nsurat: nomor[index],
+                                                  namasurat: nama[index],
+                                                  artisurat: arti[index],
+                                                )));
+                                  },
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                    child: Container(
+                                      height: 80,
+                                      decoration: BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  width: 1,
+                                                  color: "e1e1e1".toColor()))),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                              height: 25,
+                                              width: 25,
+                                              decoration: BoxDecoration(
+                                                  color: greencolor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40)),
+                                              child: Center(
+                                                  child: Text(
+                                                "${nomor[index]}",
+                                                style: GoogleFonts.poppins(
+                                                    color: Colors.white),
+                                              ))),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 25),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "${nama[index]}",
                                                   style: GoogleFonts.poppins(
-                                                      color: Colors.white),
-                                                ))),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 25),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "${nama[index]}",
-                                                    style: GoogleFonts.poppins(
-                                                        color: Colors.black87,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Text(
-                                                    "${arti[index]} (${urut[index]})",
-                                                    style: GoogleFonts.poppins(
-                                                        color: Colors.black87,
-                                                        fontSize: 10),
-                                                  ),
-                                                ],
-                                              ),
+                                                      color: Colors.black87,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(
+                                                  "${arti[index]} (${urut[index]})",
+                                                  style: GoogleFonts.poppins(
+                                                      color: Colors.black87,
+                                                      fontSize: 10),
+                                                ),
+                                              ],
                                             ),
-                                            Expanded(child: SizedBox()),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: Text(
-                                                "${asma[index]}",
-                                                style:
-                                                    GoogleFonts.notoNaskhArabic(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 25),
-                                                textAlign: TextAlign.right,
-                                              ),
+                                          ),
+                                          Expanded(child: SizedBox()),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 10),
+                                            child: Text(
+                                              "${asma[index]}",
+                                              style:
+                                                  GoogleFonts.notoNaskhArabic(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 25),
+                                              textAlign: TextAlign.right,
                                             ),
-                                            // Html(data: "${keterangan[index]}"),
-                                          ],
-                                        ),
+                                          ),
+                                          // Html(data: "${keterangan[index]}"),
+                                        ],
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
               ),
             ),
           ],
