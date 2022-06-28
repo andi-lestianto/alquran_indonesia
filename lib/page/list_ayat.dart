@@ -126,17 +126,21 @@ class _list_ayatState extends State<list_ayat> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          height: 25,
-                                          width: 25,
+
+                                          height: 35,
+                                          width: 35,
                                           decoration: BoxDecoration(
-                                              color: greencolor,
-                                              borderRadius:
-                                                  BorderRadius.circular(40)),
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/border.png"))),
+
                                           child: Center(
                                             child: Text(
                                               " ${nomor[index]}",
                                               style: GoogleFonts.poppins(
-                                                  color: Colors.white),
+
+                                                  color: Colors.black),
+
                                             ),
                                           ),
                                         ),

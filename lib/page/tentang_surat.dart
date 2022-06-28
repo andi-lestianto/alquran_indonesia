@@ -1,22 +1,20 @@
-import 'package:alquran_indonesia/model/get_allayat.dart';
 import 'package:alquran_indonesia/model/get_allsurat.dart';
+import 'package:alquran_indonesia/page/deskripsi_surat.dart';
 import 'package:alquran_indonesia/page/list_ayat.dart';
 import 'package:alquran_indonesia/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/shims/dart_ui_real.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supercharged/supercharged.dart';
 
-class list_surat extends StatefulWidget {
-  const list_surat({Key? key}) : super(key: key);
+class TentangSurat extends StatefulWidget {
+  const TentangSurat({Key? key}) : super(key: key);
 
   @override
-  State<list_surat> createState() => _list_suratState();
+  State<TentangSurat> createState() => _TentangSuratState();
 }
 
-class _list_suratState extends State<list_surat> {
+class _TentangSuratState extends State<TentangSurat> {
   final List<String?> nomor = <String?>[];
   final List<String?> nama = <String?>[];
   final List<String?> asma = <String?>[];
@@ -70,7 +68,7 @@ class _list_suratState extends State<list_surat> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Baca Alquran ",
+                          Text("Tentang Surat ",
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 22,
@@ -125,10 +123,12 @@ class _list_suratState extends State<list_surat> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => list_ayat(
+                                            builder: (context) =>
+                                                DeskripsiSurat(
                                                   nsurat: nomor[index],
                                                   namasurat: nama[index],
                                                   artisurat: arti[index],
+                                                  ketSurat: keterangan[index],
                                                 )));
                                   },
                                   child: Padding(
@@ -144,21 +144,17 @@ class _list_suratState extends State<list_surat> {
                                       child: Row(
                                         children: [
                                           Container(
-
                                               height: 35,
                                               width: 35,
                                               decoration: BoxDecoration(
                                                   image: DecorationImage(
                                                       image: AssetImage(
                                                           "assets/border.png"))),
-
                                               child: Center(
                                                   child: Text(
                                                 "${nomor[index]}",
                                                 style: GoogleFonts.poppins(
-
                                                     color: Colors.black),
-
                                               ))),
                                           Padding(
                                             padding:
