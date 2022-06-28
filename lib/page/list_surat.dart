@@ -144,17 +144,21 @@ class _list_suratState extends State<list_surat> {
                                       child: Row(
                                         children: [
                                           Container(
+
                                               height: 35,
                                               width: 35,
                                               decoration: BoxDecoration(
                                                   image: DecorationImage(
                                                       image: AssetImage(
                                                           "assets/border.png"))),
+
                                               child: Center(
                                                   child: Text(
                                                 "${nomor[index]}",
                                                 style: GoogleFonts.poppins(
+
                                                     color: Colors.black),
+
                                               ))),
                                           Padding(
                                             padding:
