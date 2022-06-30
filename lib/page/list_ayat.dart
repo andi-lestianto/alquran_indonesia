@@ -1,5 +1,6 @@
 import 'package:alquran_indonesia/model/get_allayat.dart';
 import 'package:alquran_indonesia/model/get_allsurat.dart';
+import 'package:alquran_indonesia/page/list_surat.dart';
 import 'package:alquran_indonesia/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -61,8 +62,16 @@ class _list_ayatState extends State<list_ayat> {
                         opacity: 0.2,
                         fit: BoxFit.cover)),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => list_surat()),
+                          );
+                        },
+                        child:
+                            Icon(Icons.arrow_back_sharp, color: Colors.white)),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: Column(

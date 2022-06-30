@@ -1,8 +1,9 @@
 import 'package:alquran_indonesia/model/get_allsurat.dart';
-import 'package:alquran_indonesia/page/deskripsi_surat.dart';
 import 'package:alquran_indonesia/page/list_ayat.dart';
 import 'package:alquran_indonesia/theme/theme.dart';
+import 'package:alquran_indonesia/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supercharged/supercharged.dart';
@@ -119,18 +120,7 @@ class _TentangSuratState extends State<TentangSurat> {
                             child: Column(
                               children: [
                                 GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                DeskripsiSurat(
-                                                  nsurat: nomor[index],
-                                                  namasurat: nama[index],
-                                                  artisurat: arti[index],
-                                                  ketSurat: keterangan[index],
-                                                )));
-                                  },
+                                  onTap: () {},
                                   child: Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -199,12 +189,14 @@ class _TentangSuratState extends State<TentangSurat> {
                                               textAlign: TextAlign.right,
                                             ),
                                           ),
-                                          // Html(data: "${keterangan[index]}"),
                                         ],
                                       ),
                                     ),
                                   ),
                                 ),
+                                Container(
+                                    color: greencolor,
+                                    child: Html(data: "${keterangan[index]}")),
                               ],
                             ),
                           );

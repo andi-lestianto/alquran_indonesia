@@ -1,5 +1,6 @@
 import 'package:alquran_indonesia/page/list_audio.dart';
 import 'package:alquran_indonesia/page/list_surat.dart';
+import 'package:alquran_indonesia/page/tentang_apl.dart';
 import 'package:alquran_indonesia/page/tentang_surat.dart';
 import 'package:alquran_indonesia/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -272,7 +273,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TentangAplikasi()));
+                            },
                             child: Container(
                               height: 150,
                               width: MediaQuery.of(context).size.width * 0.4,
