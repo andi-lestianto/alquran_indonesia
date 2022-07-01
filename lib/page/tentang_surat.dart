@@ -22,6 +22,7 @@ class _TentangSuratState extends State<TentangSurat> {
   final List<String?> keterangan = <String?>[];
   final List<String?> arti = <String?>[];
   final List<String?> urut = <String?>[];
+  final List<bool?> showttg = <bool?>[];
 
   void initState() {
     super.initState();
@@ -37,6 +38,7 @@ class _TentangSuratState extends State<TentangSurat> {
         keterangan.add(value[i].keterangan);
         arti.add(value[i].arti);
         urut.add(value[i].urut);
+        showttg.add(false);
       }
       setState(() {});
     });
@@ -124,79 +126,109 @@ class _TentangSuratState extends State<TentangSurat> {
                                   child: Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                    child: Container(
-                                      height: 80,
-                                      decoration: BoxDecoration(
-                                          border: Border(
-                                              bottom: BorderSide(
-                                                  width: 1,
-                                                  color: "e1e1e1".toColor()))),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                              height: 35,
-                                              width: 35,
-                                              decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          "assets/border.png"))),
-                                              child: Center(
-                                                  child: Text(
-                                                "${nomor[index]}",
-                                                style: GoogleFonts.poppins(
-                                                    color: Colors.black),
-                                              ))),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(left: 25),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "${nama[index]}",
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (showttg[index] == false) {
+                                          setState(() {
+                                            showttg[index] = true;
+                                          });
+                                        } else {
+                                          setState(() {
+                                            showttg[index] = false;
+                                          });
+                                        }
+                                      },
+                                      child: Container(
+                                        height: 80,
+                                        decoration: BoxDecoration(
+                                            border: Border(
+                                                bottom: BorderSide(
+                                                    width: 1,
+                                                    color:
+                                                        "e1e1e1".toColor()))),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                                height: 35,
+                                                width: 35,
+                                                decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                        image: AssetImage(
+                                                            "assets/border.png"))),
+                                                child: Center(
+                                                    child: Text(
+                                                  "${nomor[index]}",
                                                   style: GoogleFonts.poppins(
-                                                      color: Colors.black87,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20),
-                                                ),
-                                                SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(
-                                                  "${arti[index]} (${urut[index]})",
-                                                  style: GoogleFonts.poppins(
-                                                      color: Colors.black87,
-                                                      fontSize: 10),
-                                                ),
-                                              ],
+                                                      color: Colors.black),
+                                                ))),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 25),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "${nama[index]}",
+                                                    style: GoogleFonts.poppins(
+                                                        color: Colors.black87,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Text(
+                                                    "${arti[index]} (${urut[index]})",
+                                                    style: GoogleFonts.poppins(
+                                                        color: Colors.black87,
+                                                        fontSize: 10),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          Expanded(child: SizedBox()),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(left: 10),
-                                            child: Text(
-                                              "${asma[index]}",
-                                              style:
-                                                  GoogleFonts.notoNaskhArabic(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 25),
-                                              textAlign: TextAlign.right,
+                                            Expanded(child: SizedBox()),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: Text(
+                                                "${asma[index]}",
+                                                style:
+                                                    GoogleFonts.notoNaskhArabic(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 25),
+                                                textAlign: TextAlign.right,
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                Container(
-                                    color: greencolor,
-                                    child: Html(data: "${keterangan[index]}")),
+                                (showttg[index] == true)
+                                    ? Container(
+                                        margin: EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.2),
+                                                offset: Offset(2, 2),
+                                                blurRadius: 6,
+                                                spreadRadius: -2,
+                                              )
+                                            ]),
+                                        child:
+                                            Html(data: "${keterangan[index]}"))
+                                    : SizedBox()
                               ],
                             ),
                           );
