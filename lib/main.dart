@@ -1,15 +1,14 @@
 import 'package:alquran_indonesia/page/homescreen.dart';
 import 'package:alquran_indonesia/page/list_surat.dart';
+import 'package:alquran_indonesia/page/splashScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  
 
   // This widget is the root of your application.
   @override
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
