@@ -22,8 +22,8 @@ class datapp {
 final List<datapp> _dataapp = <datapp>[
   datapp('Andi Lestianto', '190103178', 'https://github.com/andi-lestianto'),
   datapp(
-      'Andika Wisnu Aji', '190103177', 'https://github.com/Andikawisnuaji13'),
-  datapp('Alfan Rizky Affandy', '190103176',
+      'Andika Wisnu Aji', '190103179', 'https://github.com/Andikawisnuaji13'),
+  datapp('Alfan Rizky Affandi', '190103177',
       'https://github.com/alfanrizkyaffandi'),
 ];
 
